@@ -4,6 +4,8 @@ import DiscordButton from './components/discordButton';
 import GoogleButton from './components/googleButton';
 import NavigationBar from '@/app/components/navigationBar';
 import Footer from '@/app/components/footer';
+import Link from 'next/link';
+//Whole lotta imports im a fraud lol
 
 
 //TODO: Add images (bees) for Homepage
