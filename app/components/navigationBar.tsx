@@ -2,7 +2,7 @@ const NavigationBar = () => {
   return (
     <div className="drawer">
       <input id="my-drawer-1" type="checkbox" className="drawer-toggle" />
-      
+
       {/* Hamburger button */}
       <div className="drawer-content fixed top-4 left-4 z-50">
         <label htmlFor="my-drawer-1" className="btn rounded-2xl shadow-none hover:scale-90 transition-transform">
@@ -16,10 +16,10 @@ const NavigationBar = () => {
       <div className="drawer-side z-40">
         <label htmlFor="my-drawer-1" aria-label="close sidebar" className="drawer-overlay"></label>
         <ul className="menu bg-amber-50 min-h-full w-64 p-4 pt-16">
-          
-          <h1 className="text-lg font-medium tracking-tight mb-6 px-4 sidebar-icon h-35 w-35">
-            BeeSwarm<span className="text-amber-600">.Live</span>
-          </h1>
+
+          <span className="text-[2rem] absolute top-15 gap-30 font-[family-name:var(--font-nabla)]">
+            BeeSwarm.LIVE
+          </span>
 
           <li className="sidebar-icon"><a>Home</a></li>
           <li className="sidebar-icon"><a>Servers</a></li>
