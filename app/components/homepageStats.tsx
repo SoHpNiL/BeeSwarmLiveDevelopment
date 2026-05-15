@@ -2,6 +2,7 @@
 
 export async function getHomepageStats() {
   try {
+    // TODO: fetch from MongoDB the size of array + 1 and return to label: Discord Servers
     const res = await fetch(
       'https://games.roblox.com/v1/games?universeIds=601130232',
       { next: { revalidate: 30 } }

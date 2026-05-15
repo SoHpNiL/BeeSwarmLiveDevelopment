@@ -6,7 +6,7 @@ import NavigationBar from '@/app/components/navigationBar';
 import Footer from '@/app/components/footer';
 
 
-//TODO: Make Hero Icons and overlay an Image
+//TODO: Add images (bees) for Homepage
 export default async function Home() {
   const stats = await getHomepageStats()
 
@@ -16,7 +16,7 @@ export default async function Home() {
       <NavigationBar/>
 
       {/*Title*/}
-      <span className="text-[11rem] absolute top-20 font-[family-name:var(--font-nabla)]">
+      <span className="text-[11rem] absolute top-20 hover:scale-95 transition-transform duration-700 font-(family-name:--font-nabla)">
         BeeSwarm.LIVE
       </span>
 
@@ -30,9 +30,9 @@ export default async function Home() {
       </span>
 
       {/* Buttons */}
-      <div className="flex gap-4 justify-center mb-16">
+      <div className="flex gap-4 justify-center mb-18">
         <DiscordButton/>
-        <button className="btn btn-ghost bg-amber-700 text-xl font-bold tracking-tight btn-lg rounded-full px-8 text-yellow-50 hover:scale-110 hover:bg-amber-700 transition-transform duration-400">
+        <button className="btn btn-ghost bg-amber-700 text-xl font-bold tracking-tight btn-lg rounded-full px-8 text-yellow-50 hover:scale-110 hover:bg-amber-700 transition-transform duration-400 active:scale-95">
           Progression
         </button>
       </div>
