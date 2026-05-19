@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 const NavigationBar = () => {
   // TODO: UI design
+  // TODO: mf breakpoints holy shit I hate frontend
   return (
     <div className="drawer">
       <input id="my-drawer-1" type="checkbox" className="drawer-toggle" />
