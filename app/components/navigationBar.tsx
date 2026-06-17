@@ -8,7 +8,7 @@ const NavigationBar = () => {
       <input id="my-drawer-1" type="checkbox" className="drawer-toggle" />
 
       {/* Hamburger button */}
-      <div className="drawer-content fixed top-4 left-4 z-50">
+      <div className="drawer-content fixed top-4 left-4 z-50 md:top-9 md:left-4">
         <label htmlFor="my-drawer-1" className="btn rounded-full shadow-none hover:scale-110 transition-transform active:scale-95 duration-125">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
