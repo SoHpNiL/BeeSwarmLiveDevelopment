@@ -27,11 +27,11 @@ export default function Page() {
       <div className='flex flex-2 gap-5 sm:gap-4   p-2 sm:p-4'>
 
         {/* Search sidebar */}
-        <div className='bg-[#424549] rounded-t-3xl w-40 sm:w-1 md:w-64 lg:w-72 shrink-0'>
+        <div className='bg-[#424549] rounded-2xl w-40 sm:w-1 md:w-64 lg:w-72 shrink-0'>
         </div>
 
         {/* Main list */}
-        <div className='bg-[#424549] rounded-tl-3xl flex-1'>
+        <div className='bg-[#424549] rounded-2xl flex-1'>
         </div>
 
       </div>

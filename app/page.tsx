@@ -38,9 +38,11 @@ export default async function Home() {
       {/* Buttons - wrap on tiny screens */}
       <div className="flex flex-wrap gap-4 justify-center mb-8 px-4">
         <DiscordButton/>
+        <Link href="/Pages/progression/">
         <button className="btn btn-ghost bg-amber-700 text-base sm:text-xl font-bold tracking-tight btn-lg rounded-full px-6 sm:px-8 text-yellow-50 hover:scale-110 hover:bg-amber-700 transition-transform duration-400 active:scale-95">
           Progression
         </button>
+        </Link>
       </div>
 
       {/* Stats Grid */}
