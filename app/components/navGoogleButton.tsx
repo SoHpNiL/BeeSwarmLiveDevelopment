@@ -24,9 +24,9 @@ export default function navGoogleButton() {
                     <Image
                         src={session.user.image}
                         alt={session.user.name ?? "Profile"}
-                        width={40}
-                        height={40}
-                        className="rounded-full"
+                        width={90}
+                        height={90}
+                        className="rounded-full sm:w-12 sm:h-12"
                     />
                 )}
             </button>
@@ -41,9 +41,9 @@ export default function navGoogleButton() {
             <Image
                 src="/default-profile.svg"
                 alt="Sign In"
-                width={50}
-                height={50}
-                className="rounded-full"
+                width={90}
+                height={90}
+                className="rounded-full object-contain invert brightness-0"
             />
 
         </button>

@@ -10,7 +10,7 @@ const nabla = Nabla({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="coffee">
+    <html lang="en" data-theme="dark">
       <body className={`${nabla.variable} antialiased`}>
         <Providers>{children}</Providers>
       </body>

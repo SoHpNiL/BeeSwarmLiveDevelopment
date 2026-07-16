@@ -5,9 +5,9 @@ import Link from 'next/link';
 export default function discordButton() {
   return (
     <Link href="/Pages/discord_servers/">
-    <button className="cursor-pointer flex items-center gap-3 px-6 py-3 bg-[#5865F2] hover:scale-110 transition-transform hover:bg-[#4752C4] text-white rounded-full shadow-lg duration-400 active:scale-95 group">
+    <button className="cursor-pointer flex items-center gap-3 px-5 py-3 bg-[#5865F2] duration-500 transition-transform hover:bg-[#4752C4] text-white rounded-full shadow-lg  group">
       {/* Discord Logo */}
-      <div className="antialiased relative w-7 h-7 shrink-0 transition transform-gpu duration-300">
+      <div className="antialiased relative w-7 h-7 shrink-0 transition transform-gpu duration-500">
         <Image
           src="/discord-icon-svgrepo-com.svg"
           alt="Discord logo"

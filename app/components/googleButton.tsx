@@ -8,7 +8,7 @@ export default function GoogleButton() {
 
   if (status === "loading") {
     return (
-      <button className="btn rounded-xl bg-white scale-80 sm:scale-100 md:scale-120 opacity-60">
+      <button className="btn rounded-xl bg-white border-0 scale-80 sm:scale-100 md:scale-120 opacity-60">
         <span className="loading loading-spinner loading-xs" />
       </button>
     );
@@ -18,14 +18,14 @@ export default function GoogleButton() {
     return (
       <button
         onClick={() => signOut()}
-        className="btn rounded-xl bg-white text-black scale-80 sm:scale-100 md:scale-120 md:hover:scale-125 sm:hover:scale-105 hover:scale-85 transition-transform duration-200"
+        className="btn rounded-xl bg-white border-0 text-black scale-80 sm:scale-100 md:scale-120 md:hover:scale-125 sm:hover:scale-105 hover:scale-85 transition-transform duration-200"
       >
         {session.user?.image && (
           <Image
             src={session.user.image}
             alt={session.user.name ?? "Profile"}
-            width={20}
-            height={20}
+            width={25}
+            height={25}
             className="rounded-full"
           />
         )}
@@ -37,9 +37,9 @@ export default function GoogleButton() {
   return (
     <button
       onClick={() => signIn("google")}
-      className="btn rounded-xl bg-white text-black scale-80 sm:scale-100 md:scale-120 md:hover:scale-125 sm:hover:scale-105 hover:scale-85 transition-transform duration-200"
+      className="btn rounded-xl bg-white border-0 text-black scale-80 sm:scale-100 md:scale-120 md:hover:scale-125 sm:hover:scale-105 hover:scale-85 transition-transform duration-200"
     >
-      <svg aria-label="Google logo" width="16" height="16" viewBox="0 0 512 512">
+      <svg aria-label="Google logo" width="25" height="25" viewBox="0 0 512 512">
         <g>
           <path d="m0 0H512V512H0" fill="#fff"></path>
           <path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"></path>

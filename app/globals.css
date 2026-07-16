@@ -1,9 +1,16 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui"{
+    themes: dark --default;
+}
 
+ @plugin "daisyui/theme" {
+   name: "dark";
+  --color-primary: #30302E;
+ }
+ 
 @layer components {
     .sidebar-icon{
-       @apply m-4 text-amber-800 text-lg font-bold hover:scale-110 transition transform duration-200; 
+       @apply m-9 text-white text-3xl font-bold hover:scale-110 transition transform duration-200; 
     }
 }
 
