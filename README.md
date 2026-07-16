@@ -40,7 +40,6 @@ Deployment is ongoing.
 ### Backend
 | | Technology |
 |---|---|
-| Framework | Spring Boot (Java) |
 | Database | MongoDB |
 | API | Custom RESTful APIs |
 
