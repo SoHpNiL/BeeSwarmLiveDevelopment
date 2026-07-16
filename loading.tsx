@@ -1,1 +1,0 @@
-//TODO: implement a basic load function between pages/async components
