@@ -24,8 +24,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
   },
   pages: {
-    // TBA: Optional: point sign-in errors somewhere sensible instead of the
-    // default NextAuth error page. Remove this if you don't have the route.
-    // signIn: "/login",
+    // TBA/Optional: point sign-in errors somewhere sensible instead of the
   },
 });

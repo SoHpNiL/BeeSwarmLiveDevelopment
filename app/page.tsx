@@ -1,4 +1,4 @@
-import { getHomepageStats } from "./components/homepageStats"
+import { getHomepageStats } from "../lib/homepageStats"
 import DiscordButton from './components/discordButton';
 import GoogleButton from './components/googleButton';
 import NavigationBar from '@/app/components/navigationBar';
@@ -58,7 +58,7 @@ export default async function Home() {
         ))}
       </div>
 
-      {/* Google Button - tucked into corner safely */}
+      {/* Google Login */}
       <div className="absolute top-4 right-4 sm:top-5 sm:right-10 z-2">
         <GoogleButton/>
       </div>
