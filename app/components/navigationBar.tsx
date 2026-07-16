@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import NavGoogleButton from './navGoogleButton';
+
 
 const NavigationBar = () => {
   // TODO: UI design
@@ -24,10 +26,11 @@ const NavigationBar = () => {
           <span className="text-[2rem] absolute bottom-15 font-(family-name:--font-nabla)">
             BeeSwarm.LIVE
           </span>
-
           <Link href='/'><li className="sidebar-icon relative flex items-center justify-center">Home</li></Link>
-           <Link href='/Pages/discord_servers/'><li className="sidebar-icon relative flex items-center justify-center">Servers</li></Link>
+          <Link href='/Pages/discord_servers/'><li className="sidebar-icon relative flex items-center justify-center">Servers</li></Link>
           <li className="sidebar-icon relative flex items-center justify-center">Settings</li>
+          <li className="sidebar-icon relative flex items-center  "> <NavGoogleButton/> </li>
+
         </ul>
       </div>
     </div>

@@ -8,7 +8,7 @@ export default function GoogleButton() {
 
   if (status === "loading") {
     return (
-      <button className="btn rounded-xl bg-white text-black border-2 border-amber-600 scale-80 sm:scale-100 md:scale-120 opacity-60">
+      <button className="btn rounded-xl bg-white scale-80 sm:scale-100 md:scale-120 opacity-60">
         <span className="loading loading-spinner loading-xs" />
       </button>
     );
@@ -18,7 +18,7 @@ export default function GoogleButton() {
     return (
       <button
         onClick={() => signOut()}
-        className="btn rounded-xl bg-white text-black border-2 border-amber-600 scale-80 sm:scale-100 md:scale-120 md:hover:scale-125 sm:hover:scale-105 hover:scale-85 transition-transform duration-200"
+        className="btn rounded-xl bg-white text-black scale-80 sm:scale-100 md:scale-120 md:hover:scale-125 sm:hover:scale-105 hover:scale-85 transition-transform duration-200"
       >
         {session.user?.image && (
           <Image
@@ -37,7 +37,7 @@ export default function GoogleButton() {
   return (
     <button
       onClick={() => signIn("google")}
-      className="btn rounded-xl bg-white text-black border-2 border-amber-600 scale-80 sm:scale-100 md:scale-120 md:hover:scale-125 sm:hover:scale-105 hover:scale-85 transition-transform duration-200"
+      className="btn rounded-xl bg-white text-black scale-80 sm:scale-100 md:scale-120 md:hover:scale-125 sm:hover:scale-105 hover:scale-85 transition-transform duration-200"
     >
       <svg aria-label="Google logo" width="16" height="16" viewBox="0 0 512 512">
         <g>
