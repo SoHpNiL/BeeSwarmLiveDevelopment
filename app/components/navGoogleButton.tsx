@@ -20,7 +20,7 @@ export default function navGoogleButton() {
         return (
             <button
                 onClick={() => signOut()}
-                className=" scale-80 sm:scale-100 md:scale-120 md:hover:scale-125 sm:hover:scale-105 hover:scale-85 transition-transform duration-200"
+                className=" scale-70 sm:scale-130"
             >
                 {session.user?.image && (
                     <Image
@@ -39,7 +39,7 @@ export default function navGoogleButton() {
     return (
         <button
             onClick={() => signIn("google")}
-            className="scale-80 sm:scale-100 md:scale-120 md:hover:scale-125 sm:hover:scale-105 hover:scale-85 transition-transform duration-200"
+            className="scale-80 sm:scale-100"
         >
             <Image
                 src="/default-profile.svg"

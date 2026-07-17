@@ -10,7 +10,7 @@
  
 @layer components {
     .sidebar-icon{
-       @apply m-9 text-white text-3xl font-bold hover:scale-110 transition transform duration-200; 
+       @apply m-9 text-white text-3xl font-bold transition transform duration-200 hover:text-amber-600; 
     }
 }
 

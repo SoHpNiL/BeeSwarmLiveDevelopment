@@ -20,7 +20,7 @@ const NavigationBar = () => {
       {/* Sidebar */}
       <div className="drawer-side z-40">
         <label htmlFor="my-drawer-1" aria-label="close sidebar" className="drawer-overlay"></label>
-        <ul className="menu bg-neutral-700  min-h-full w-64 p-4 pt-16 rounded-r-xl">
+        <ul className="menu bg-neutral-700/95  min-h-full w-64 p-4 pt-16 rounded-r-xl">
 
           <span className="text-[2rem] absolute bottom-15 font-(family-name:--font-nabla)">
             BeeSwarm.LIVE

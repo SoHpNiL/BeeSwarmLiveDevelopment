@@ -1,5 +1,5 @@
 import NavigationBar from '@/app/components/navigationBar';
-import StatCard from '@/app/components/StatCard';
+import StatCard from '@/app/components/statCard';
 
 export default function Page() {
 
