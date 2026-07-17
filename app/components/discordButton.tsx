@@ -4,8 +4,8 @@ import Link from 'next/link';
 
 export default function discordButton() {
   return (
-    <Link href="/Pages/discord_servers/">
-    <button className="cursor-pointer flex items-center gap-3 px-5 py-3 bg-[#5865F2] duration-500 transition-transform hover:bg-[#4752C4] text-white rounded-full shadow-lg  group">
+    <Link href="/Servers/">
+    <button className="cursor-pointer flex items-center gap-3 px-5 py-3 bg-[#5865F2] duration-500 transition-transform hover:bg-[#4752C4] text-white rounded-full">
       {/* Discord Logo */}
       <div className="antialiased relative w-7 h-7 shrink-0 transition transform-gpu duration-500">
         <Image

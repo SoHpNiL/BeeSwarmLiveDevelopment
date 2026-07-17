@@ -6,6 +6,7 @@ import Image from "next/image";
 export default function navGoogleButton() {
     const { data: session, status } = useSession();
 
+    // Loading
     if (status === "loading") {
         return (
             <button className="btn rounded-b-full bg-white scale-80 sm:scale-100 md:scale-120 opacity-60">
@@ -13,7 +14,8 @@ export default function navGoogleButton() {
             </button>
         );
     }
-
+    
+    // Signed in Account
     if (session) {
         return (
             <button
@@ -33,6 +35,7 @@ export default function navGoogleButton() {
         );
     }
 
+    // Signed-out or Not logged-In
     return (
         <button
             onClick={() => signIn("google")}

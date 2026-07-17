@@ -14,9 +14,9 @@ export default async function Home() {
 
       <NavigationBar />
 
-      {/* Title - scales from mobile → 4K */}
+      {/* Title */}
       <span className="
-        text-[3.5rem] sm:text-[5rem] md:text-[7rem] lg:text-[9rem] xl:text-[11rem] 2xl:text-[13rem]
+        text-[3.3rem] sm:text-[5rem] md:text-[7rem] lg:text-[9rem] xl:text-[11rem] 2xl:text-[13rem]
         absolute top-16 sm:top-18 md:top-20
         hover:scale-95 transition-transform duration-700
         font-(family-name:--font-nabla)
@@ -25,7 +25,7 @@ export default async function Home() {
         BeeSwarm.LIVE
       </span>
 
-      {/* Spacer - grows with title size */}
+      {/* Gap */}
       <div className="h-32 sm:h-44 md:h-52 lg:h-60" />
 
       {/* Subtitle */}
@@ -36,15 +36,15 @@ export default async function Home() {
          Ultimate Tool
       </span>
 
-      {/* Buttons - wrap on tiny screens */}
+      {/* Buttons */}
       <div className="flex flex-wrap gap-4 justify-center mb-8 px-4">
         <Link
-          href="/Pages/progression/"
+          href="/Progression/Home"
 
-          className="btn btn-ghost inline-flex shadow-sm items-center gap-3 text-xl font-bold tracking-tight bg-amber-600 sm:text-xl btn-lg rounded-full px-6 sm:px-8 text-yellow-50 hover:bg-amber-700 active:scale-95"
+          className="btn btn-ghost inline-flex items-center gap-3 text-xl font-bold tracking-tight bg-amber-600 sm:text-xl btn-lg rounded-full px-5 py-3 sm:px-8 text-yellow-50 hover:bg-amber-700 hover:outline-amber-700"
         >
         
-          <div className="antialiased relative w-9 h-9 shrink-0 transition transform-gpu ">
+          <div className="antialiased relative w-9 h-9 transition transform-gpu ">
             <Image
               src="/hive.svg"
               alt="Hive logo"

@@ -18,7 +18,7 @@ export async function getHomepageStats() {
 
     return [
       { label: 'Active Players', value: playing.toLocaleString(), icon: '📍' },
-      { label: 'Average Honey Per Click', value: honeyData.value, icon: '🍯' },
+      { label: 'Pollen Per Click', value: honeyData.value, icon: '🍯' },
       { label: 'Discord Servers', value: '30+', icon: '✨' }
     ]
   } catch (error) {

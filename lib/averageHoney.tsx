@@ -8,7 +8,7 @@ export async function averageHoney() {
 
     if (session === null) {
         isLoggedIn = false;
-        return { value: 'Log-In Required'};
+        return { value: 'Sign-Up'};
     }
 
     // TODO: create an average Honey calculation System, and fetch it here from MongoDB
