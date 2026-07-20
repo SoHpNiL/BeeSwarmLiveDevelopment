@@ -1,3 +1,4 @@
+
 export interface GearType {
     name: string;
     costPollen: number;
@@ -5,6 +6,7 @@ export interface GearType {
     id: number;
     image?: string;
 }
+
 
 export function findGear<Gear extends GearType>(id: number, array: Gear[]): Gear {
 

@@ -3,6 +3,10 @@
     themes: dark --default;
 }
 
+@source "./app/**/*.{js,ts,jsx,tsx}";
+@source "./components/**/*.{js,ts,jsx,tsx}";
+@source "./lib/**/*.{js,ts,jsx,tsx}";
+
  @plugin "daisyui/theme" {
    name: "dark";
   --color-primary: #30302E;

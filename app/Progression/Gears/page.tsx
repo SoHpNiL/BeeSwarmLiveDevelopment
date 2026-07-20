@@ -3,16 +3,9 @@
 import NavigationBar from '@/app/components/navigationBar';
 import Image from 'next/image';
 import HomeButton from '@/app/components/homeButton';
-import { tools } from '@/lib/gear/tools';
-import { bags } from '@/lib/gear/bags';
-import { belts } from '@/lib/gear/belts';
-import { boots } from '@/lib/gear/boots';
-import { guards } from '@/lib/gear/guards';
-import { masks } from '@/lib/gear/masks';
-import { EquippedGear } from '@/lib/equippedGear';
+import DropDown from '@/app/components/dropDown';
 import { useState } from 'react';
-import { GearType } from '@/lib/gear/gearType';
-import { findGear } from '@/lib/gear/gearType';
+import { tools, bags, belts, boots, guards, masks, GearType, findGear, EquippedGear, GearCategory} from '@/lib/gear/';
 
 
 export default function Page() {
@@ -27,6 +20,8 @@ export default function Page() {
         mask: 0
     });
 
+
+
     // The variables of each Gear Object
     const chosenTool = findGear(gear.tool, tools);
     const chosenBag = findGear(gear.bag, bags);
@@ -37,10 +32,19 @@ export default function Page() {
 
 
     // chooseTool sets the ID for tool useState.
-    const chooseGear = (x: number, gear: string) => {
+    const chooseGear = (x: number, gear: GearCategory) => {
         console.log("User is choosing a Gear...")
         setGear(prev => ({ ...prev, [gear]: x }));
     }
+
+        /* <select className="select">
+                    <option disabled selected>Pick a Tool</option>
+                    {tools.map((item) => 
+                        <option className="text-black" onClick={() => chooseGear(item.id, "tool")}>
+                            {item.name}
+                        </option>
+                    )}
+                </select> */
 
 
 
@@ -53,15 +57,9 @@ export default function Page() {
                 <h1 className="text-2xl sm:text-4xl font-bold text-white">
                     Current Tool: <span className="text-amber-400">{chosenTool.name}</span>
                 </h1>
+                <DropDown gear={"tool"} chooseGear={chooseGear}>
 
-                <select className="select">
-                    <option disabled selected>Pick a Tool</option>
-                    {tools.map((item) => 
-                        <option className="text-black" onClick={() => chooseGear(item.id, "tool")}>
-                            {item.name}
-                        </option>
-                    )}
-                </select>
+                </DropDown>
                 </div>
         </main>
     );
