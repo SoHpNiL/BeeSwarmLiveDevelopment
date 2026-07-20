@@ -1,13 +1,12 @@
-interface Boot {
-    name: string;
-    extraCost?: string;
-    costPollen: number;
+import { GearType } from './gearType';
+
+
+interface Boot extends GearType {
     pollen?: number;
-    id: number;
-    image?: string;
 }
 
 export const boots: Boot[] = [
+    { id: 0, name: "none", costPollen: 0 },
     { id: 1, name: "Basic Boots", costPollen: 4400 },
     { id: 2, name: "Hiking Boots", costPollen: 2200000 },
     { id: 3, name: "Beekeeper's Boots", costPollen: 15000000 },

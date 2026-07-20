@@ -55,6 +55,7 @@ export default async function Home() {
                 src="/sprout.webp"
                 alt=""
                 fill
+                sizes="42px"
                 priority
                 className=""
               />

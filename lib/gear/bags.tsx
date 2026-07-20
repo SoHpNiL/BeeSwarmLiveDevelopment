@@ -1,13 +1,10 @@
-interface Bag {
-    name: string;
-    extraCost?: string;
-    costPollen: number;
+import { GearType } from './gearType';
+
+export interface Bag extends GearType {
     redPollen?: number;
     bluePollen?: number;
     whitePollen?: number;
     pollen?: number;
-    id: number;
-    image?: string;
 }
 
 export const bags: Bag[] = [

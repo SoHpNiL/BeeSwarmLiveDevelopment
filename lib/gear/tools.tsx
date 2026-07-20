@@ -1,9 +1,7 @@
-interface Tool {
-    name: string;
+import { GearType } from './gearType';
+
+interface Tool extends GearType{
     pollenPerSecond: number;
-    costPollen: number;
-    id: number;
-    image?: string;
 }
 
 export const tools: Tool[] = [

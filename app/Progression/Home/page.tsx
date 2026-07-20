@@ -1,5 +1,8 @@
 import NavigationBar from '@/app/components/navigationBar';
 import StatCard from '@/app/components/statCard';
+import HomeButton from '@/app/components/homeButton';
+import Link from 'next/link';
+
 
 export default function Page() {
 
@@ -7,9 +10,7 @@ export default function Page() {
 
         <main className="bg-[#30302E] flex flex-col h-screen">
 
-            <span className="absolute hidden sm:block top-4 right-4 font-(family-name:--font-nabla) px-4 text-2xl">
-                BeeSwarm.LIVE
-            </span>
+            <HomeButton/>
             {/*Top panel*/}
             <div className="h-1/3 bg-[#474746] w-screen justify-center flex flex-col">
                 <NavigationBar />
@@ -31,9 +32,11 @@ export default function Page() {
                 <button className="btn btn-ghost bg-amber-600 text-base sm:text-xl font-bold tracking-tight btn-lg rounded-full px-6 sm:px-8 text-yellow-50 hover:scale-110 hover:bg-amber-700 transition-transform duration-400 active:scale-95">
                     Planter Calander
                 </button>
+                <Link href="/Progression/Gears">
                 <button className="btn btn-ghost bg-amber-600 text-base sm:text-xl font-bold tracking-tight btn-lg rounded-full px-6 sm:px-8 text-yellow-50 hover:scale-110 hover:bg-amber-700 transition-transform duration-400 active:scale-95">
                     Update Gears
                 </button>
+                </Link>
                 <button className="btn btn-ghost bg-amber-600 text-base sm:text-xl font-bold tracking-tight btn-lg rounded-full px-6 sm:px-8 text-yellow-50 hover:scale-110 hover:bg-amber-700 transition-transform duration-400 active:scale-95">
                     Amulets
                 </button>

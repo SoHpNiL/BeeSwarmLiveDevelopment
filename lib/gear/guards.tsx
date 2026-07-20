@@ -1,15 +1,13 @@
-interface Guard {
-    name: string;
-    extraCost?: string;
-    costPollen: number;
+import { GearType } from './gearType';
+
+interface Guard extends GearType {
     redPollen?: number;
     bluePollen?: number;
     whitePollen?: number;
-    id: number;
-    image?: string;
 }
 
 export const guards: Guard[] = [
+    { id: 0, name: "none", costPollen: 0},
     { id: 1, name: "Brave Guard", costPollen: 300000, whitePollen: 5 },
     { id: 2, name: "Hasty Guard", costPollen: 300000 }, // First 4 optional besides Hasty (Good Speed)
     { id: 3, name: "Bomber Guard", costPollen: 300000, whitePollen: 5 },

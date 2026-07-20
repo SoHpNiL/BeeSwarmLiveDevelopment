@@ -10,8 +10,9 @@ export default function discordButton() {
         <div className="antialiased relative w-7 h-7 shrink-0 transition transform-gpu duration-500 overflow-visible">
           <Image
             src="/Hivesticker_gamer_chat_icon.webp"
-            alt="Discord logo"
+            alt=""
             fill
+            sizes="42px"
             priority
             className="scale-150"
           />

@@ -1,9 +1,12 @@
 import NavigationBar from '@/app/components/navigationBar';
 import Image from 'next/image';
+import HomeButton from '@/app/components/homeButton';
+
 
 export default function Page() {
   return (
     <main className='h-screen bg-[#36393e] flex flex-col overflow-hidden'>
+      <HomeButton/>
       <NavigationBar />
 
       {/* Header */}
