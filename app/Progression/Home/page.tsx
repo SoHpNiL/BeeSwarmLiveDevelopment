@@ -2,6 +2,8 @@ import NavigationBar from '@/app/components/navigationBar';
 import StatCard from '@/app/components/statCard';
 import HomeButton from '@/app/components/homeButton';
 import Link from 'next/link';
+import Icon from '@/app/components/icon';
+
 
 
 export default function Page() {
@@ -34,7 +36,7 @@ export default function Page() {
                 </button>
                 <Link href="/Progression/Gears">
                 <button className="btn btn-ghost bg-amber-600 text-base sm:text-xl font-bold tracking-tight btn-lg rounded-full px-6 sm:px-8 text-yellow-50 hover:scale-110 hover:bg-amber-700 transition-transform duration-400 active:scale-95">
-                    Update Gears
+                    Update Gears <Icon image="/gears/tools/scooper.webp" properties="h-9 w-9"/>
                 </button>
                 </Link>
                 <button className="btn btn-ghost bg-amber-600 text-base sm:text-xl font-bold tracking-tight btn-lg rounded-full px-6 sm:px-8 text-yellow-50 hover:scale-110 hover:bg-amber-700 transition-transform duration-400 active:scale-95">

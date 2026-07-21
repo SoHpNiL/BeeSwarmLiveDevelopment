@@ -4,7 +4,7 @@ export interface Belt extends GearType {
 }
 
 export const belts: Belt[] = [
-    { id: 0, name: "none", costPollen: 0 },
+    { id: 0, name: "None", costPollen: 0 },
     { id: 1, name: "Belt Pocket", costPollen: 14000 },
     { id: 2, name: "Belt Bag", costPollen: 440000 },
     { id: 3, name: "Mondo Belt Bag", costPollen: 12400000 },

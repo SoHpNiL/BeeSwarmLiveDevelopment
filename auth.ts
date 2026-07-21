@@ -24,6 +24,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
   },
   pages: {
-    // TBA/Optional: point sign-in errors somewhere sensible instead of the
+    // Optional: redirect to a page for first-time users to set-up their gears
   },
 });

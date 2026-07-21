@@ -7,7 +7,7 @@ interface Guard extends GearType {
 }
 
 export const guards: Guard[] = [
-    { id: 0, name: "none", costPollen: 0},
+    { id: 0, name: "None", costPollen: 0},
     { id: 1, name: "Brave Guard", costPollen: 300000, whitePollen: 5 },
     { id: 2, name: "Hasty Guard", costPollen: 300000 }, // First 4 optional besides Hasty (Good Speed)
     { id: 3, name: "Bomber Guard", costPollen: 300000, whitePollen: 5 },

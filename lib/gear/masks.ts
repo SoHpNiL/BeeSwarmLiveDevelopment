@@ -8,7 +8,7 @@ interface Mask extends GearType {
 }
 
 export const masks: Mask[] = [
-    { id: 0, name: "none", costPollen: 0 },
+    { id: 0, name: "None", costPollen: 0 },
     { id: 1, name: "Helmet", costPollen: 30000, pollen: 10 },
     { id: 2, name: "Propeller Hat", costPollen: 2500000, pollen: 15 },
     { id: 3, name: "Beekeeper's Mask", costPollen: 20000000, pollen: 20 },

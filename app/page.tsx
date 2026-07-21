@@ -33,7 +33,7 @@ export default async function Home() {
           BeeSwarm.LIVE
         </span>
 
-        {/* Gap */}
+        {/* Gap (useless code now that I see it but its staying)*/}
         <div className="h-32 sm:h-44 md:h-52 lg:h-60" />
 
         {/* Subtitle */}
