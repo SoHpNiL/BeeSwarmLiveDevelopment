@@ -4,6 +4,8 @@ export async function getHomepageStats() {
 
   try {
     // TODO: fetch from MongoDB the size of array + 1 and return to label: Discord Servers
+
+    //fetches roblox game's data
     const res = await fetch(
       'https://games.roblox.com/v1/games?universeIds=601130232',
       { next: { revalidate: 30 } }
@@ -14,7 +16,7 @@ export async function getHomepageStats() {
     // fetch data
     const honeyData = await averageHoney();
     const data = await res.json()
-    const playing = data.data[0]?.playing ?? 0  
+    const playing = data.data[0]?.playing ?? 0  // Obtain player-count
 
     return [
       { label: 'Active Players', value: playing.toLocaleString(), icon: '📍' },

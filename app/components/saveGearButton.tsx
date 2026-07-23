@@ -1,5 +1,7 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import Icon from '@/app/components/icon';
+import route from '@/app/api/fetchGear/route';
+
 
 
 
