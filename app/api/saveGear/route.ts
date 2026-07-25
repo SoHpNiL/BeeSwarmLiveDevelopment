@@ -4,6 +4,8 @@ import clientPromise from "@/lib/mongodb";
 import { EquippedGear } from "@/lib/gear/gearInfo";
 
 export async function POST(request: Request) {
+    // Request should not be in json format
+        
     const session = await auth();
 
     // User not logged-in. Error 401
@@ -11,6 +13,7 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: 'User not Logged-In' }, { status: 401 });
     }
 
+    
     const gear: EquippedGear = await request.json();
 
     const client = await clientPromise;

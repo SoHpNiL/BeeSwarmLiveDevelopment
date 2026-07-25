@@ -1,13 +1,13 @@
 "use client";
 
 import NavigationBar from '@/app/components/navigationBar';
-import Image from 'next/image';
 import HomeButton from '@/app/components/homeButton';
 import DropDown from '@/app/components/dropDown';
 import Icon from '@/app/components/icon';
 import SaveGearButton from '@/app/components/saveGearButton';
+import { getGearIds } from '@/lib/getGearIds';
 import { useState } from 'react';
-import { tools, bags, belts, boots, guards, masks, GearType, findGear, EquippedGear, GearCategory } from '@/lib/gear/';
+import { tools, bags, belts, boots, guards, masks, findGear, EquippedGear, GearCategory } from '@/lib/gear/';
 
 
 
@@ -22,7 +22,7 @@ export default function Page() {
         mask: 0
     });
 
-    
+
 
 
 
@@ -88,7 +88,14 @@ export default function Page() {
                         <h1 className="text-sm sm:text-3xl font-bold text-white mt-8 inline-block"> Honey per Minute: </h1> <span className="text-sm sm:text-3xl text-amber-400"> yoo</span>
                     </div>
 
-                    <SaveGearButton/>
+                    <SaveGearButton gears={{
+                        tool: gear.tool,
+                        bag: gear.bag,
+                        belt: gear.belt,
+                        boot: gear.boot,
+                        guard: gear.guard,
+                        mask: gear.mask
+                    }} />
                 </div>
             </div>
 

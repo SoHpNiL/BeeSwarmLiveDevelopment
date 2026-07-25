@@ -1,7 +1,7 @@
 'use client';
 import Icon from '@/app/components/icon';
 import { useState, useRef, useEffect } from 'react';
-import { tools, bags, belts, boots, guards, masks, GearType, findGear, EquippedGear, GearCategory } from '@/lib/gear/';
+import { tools, bags, belts, boots, guards, masks, GearCategory } from '@/lib/gear/';
 
 // Pass in props from outside the file
 interface ImportProp {
