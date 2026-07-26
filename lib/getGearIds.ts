@@ -1,7 +1,6 @@
 import { EquippedGear } from '@/lib/gear';
 
 export async function getGearIds(): Promise<EquippedGear> {
-    const jsonGearIds = await fetch ('/api/fetchGear');
-    const gearIds = jsonGearIds.json(); // Unpack JSON file
+    const gearIds = await fetch ('/api/fetchGear').then(response => response.json()) //fetch gearIds and unpack json file
     return gearIds;
 }

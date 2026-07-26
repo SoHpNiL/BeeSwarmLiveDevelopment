@@ -22,12 +22,12 @@ export default function SaveGearButton({ gears }: { gears: EquippedGear }) {
             console.error("Data failed to send", e)
             setDisabled(false);
             setFailure(true);
-            setTimeout(() => setFailure(false), 5000);
+            setTimeout(() => setFailure(false), 2000);
             return;
         }
 
-        console.log("5 Second Cooldown Activated")
-        setTimeout(() => setDisabled(false), 5000)
+        console.log("2 Second Cooldown Activated")
+        setTimeout(() => setDisabled(false), 2000)
     }
 
 

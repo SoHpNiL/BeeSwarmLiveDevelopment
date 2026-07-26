@@ -6,13 +6,18 @@ import DropDown from '@/app/components/dropDown';
 import Icon from '@/app/components/icon';
 import SaveGearButton from '@/app/components/saveGearButton';
 import { getGearIds } from '@/lib/getGearIds';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { tools, bags, belts, boots, guards, masks, findGear, EquippedGear, GearCategory } from '@/lib/gear/';
 
+/* 
+Function: This page allows users to select and save gears to the database and replans what
+          gear they aim to achieve 
+*/
 
 
 export default function Page() {
     // Utilize ID numbers to set gears states
+
     const [gear, setGear] = useState<EquippedGear>({
         tool: 1,
         bag: 1,
@@ -22,6 +27,27 @@ export default function Page() {
         mask: 0
     });
 
+    // Effect is only executed once due to empty [] dependency, hence only retrieves data once upon rendering page
+    useEffect(() => {
+        const loadData = async () => {
+            try {
+                const data = await getGearIds();
+                setGear(data);
+            } catch (e) {
+                console.error("Data couldn't be fetched", e);
+                setGear({
+                    tool: 1,
+                    bag: 1,
+                    belt: 0,
+                    boot: 0,
+                    guard: 0,
+                    mask: 0
+                });
+            }
+        };
+
+        loadData();
+    }, [] );
 
 
 

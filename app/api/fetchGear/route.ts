@@ -7,7 +7,7 @@ export async function GET() {
     const session = await auth();
 
     if (!session) {
-        return NextResponse.json({ tool: 1, bag: 1, belt: 0, boot: 0, guard: 0, mask: 0 }, { status: 404 });
+        return NextResponse.json({ tool: 1, bag: 1, belt: 0, boot: 0, guard: 0, mask: 0 }, { status: 200 });
     }
 
     const client = await clientPromise;
@@ -19,10 +19,10 @@ export async function GET() {
 
     // if email SOMEHOW not found or gears not set, return default loadset.
     if (!gears || !gears.gearIds) {
-        return NextResponse.json({ tool: 1, bag: 1, belt: 0, boot: 0, guard: 0, mask: 0 }, { status: 404 });
+        return NextResponse.json({ tool: 1, bag: 1, belt: 0, boot: 0, guard: 0, mask: 0 }, { status: 200 });
     }
 
     //return gearIds
-    return NextResponse.json({ gearIds: gears.gearIds }, { status: 200 });
+    return NextResponse.json(gears.gearIds, { status: 200 });
 
 }
