@@ -8,6 +8,8 @@ import SaveGearButton from '@/app/components/saveGearButton';
 import { getGearIds } from '@/lib/getGearIds';
 import { useState, useEffect } from 'react';
 import { tools, bags, belts, boots, guards, masks, findGear, EquippedGear, GearCategory } from '@/lib/gear/';
+import { pollenPerSecond } from '@/lib/pollenPerSecond';
+import { roundNumbers } from '@/lib/roundNumbers';
 
 /* 
 Function: This page allows users to select and save gears to the database and replans what
@@ -30,7 +32,8 @@ export default function Page() {
         mask: 0
     });
 
-    // Effect is only executed once due to empty [] dependency, hence only retrieves data once upon rendering page
+    // Effect is only executed once due to empty [] dependency, hence only retrieves data once upon rendering page.
+    // Afterwards, the loading is set to false so users can view their data.
     useEffect(() => {
         const loadData = async () => {
             try {
@@ -39,14 +42,6 @@ export default function Page() {
                 setLoading(false);
             } catch (e) {
                 console.error("Data couldn't be fetched", e);
-                setGear({
-                    tool: 1,
-                    bag: 1,
-                    belt: 0,
-                    boot: 0,
-                    guard: 0,
-                    mask: 0
-                });
                 setLoading(false);
             }
         };
@@ -71,6 +66,8 @@ export default function Page() {
         console.log("User chose a Gear...")
         setGear(prev => ({ ...prev, [gear]: x }));
     }
+
+
 
     // Data loaded
     if (!loading) {
@@ -117,7 +114,14 @@ export default function Page() {
                     {/* Stats  Area */}
                     <div className="bg-[#3d3d3d] w-1/3 sm:w-1/4 h-96 mt-10 rounded-2xl flex flex-col items-center gap-4">
                         <div>
-                            <h1 className="text-sm sm:text-3xl font-bold text-white mt-8 inline-block"> Honey per Minute: </h1> <span className="text-sm sm:text-3xl text-amber-400"> yoo</span>
+                            <h1 className="text-sm sm:text-xl font-bold text-white mt-8"> Pollen per Minute </h1>
+                            <h1 className="text-sm sm:text-xl text-amber-400"> White Fields: {roundNumbers((pollenPerSecond(gear).whitePollen) * 60)} </h1>
+                            <h1 className="text-sm sm:text-xl text-amber-400"> Red Fields: {roundNumbers((pollenPerSecond(gear).redPollen) * 60)} </h1>
+                            <h1 className="text-sm sm:text-xl text-amber-400"> Blue Fields: {roundNumbers((pollenPerSecond(gear).bluePollen) * 60)} </h1>
+                            <h1 className="text-sm sm:text-lg text-white"> Note: This is the minimum honey you should with gear alone, you should exceed this. </h1>
+
+
+
                         </div>
 
                         <SaveGearButton gears={{

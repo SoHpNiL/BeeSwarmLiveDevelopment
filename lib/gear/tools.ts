@@ -2,6 +2,11 @@ import { GearType } from './gearType';
 
 interface Tool extends GearType {
     pollenPerSecond: number;
+    redPollen?: number;
+    bluePollen?: number;
+    whitePollen?: number;
+
+    //TODO: add pollen buffs per tool and images for other gears
 }
 
 export const tools: Tool[] = [
