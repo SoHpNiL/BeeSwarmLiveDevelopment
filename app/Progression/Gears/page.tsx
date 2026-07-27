@@ -18,6 +18,9 @@ Function: This page allows users to select and save gears to the database and re
 export default function Page() {
     // Utilize ID numbers to set gears states
 
+    // Stops page from displaying default gears and waits til players gears are fetched (or not).
+    const [loading, setLoading] = useState<boolean>(true);
+
     const [gear, setGear] = useState<EquippedGear>({
         tool: 1,
         bag: 1,
@@ -33,6 +36,7 @@ export default function Page() {
             try {
                 const data = await getGearIds();
                 setGear(data);
+                setLoading(false);
             } catch (e) {
                 console.error("Data couldn't be fetched", e);
                 setGear({
@@ -43,11 +47,12 @@ export default function Page() {
                     guard: 0,
                     mask: 0
                 });
+                setLoading(false);
             }
         };
 
         loadData();
-    }, [] );
+    }, []);
 
 
 
@@ -67,64 +72,108 @@ export default function Page() {
         setGear(prev => ({ ...prev, [gear]: x }));
     }
 
+    // Data loaded
+    if (!loading) {
+        return (
+            <main className="min-h-screen bg-[#30302E] flex flex-col px-4 py-10">
+                <NavigationBar />
+                <HomeButton />
+                {/* DropDown  Area */}
+                <div className="flex flex-row justify-between">
 
-    return (
-        <main className="min-h-screen bg-[#30302E] flex flex-col px-4 py-10">
-            <NavigationBar />
-            <HomeButton />
-            {/* DropDown  Area */}
-            <div className="flex flex-row justify-between">
+                    <div className="bg-[#3d3d3d] w-1/3 sm:w-1/4 h-screen mt-0 rounded-2xl">
+                        <div className="mt-16 flex flex-col items-center gap-4">
+                            <h1 className="text-sm sm:text-3xl font-bold text-white relative inline-block">
+                                Current Tool: <Icon image={chosenTool.image} x={48} y={48} properties="w-8 sm:w-14 height:auto inline-block align-middle" />
+                            </h1>
+                            <DropDown gear={"tool"} chooseGear={chooseGear} />
 
-                <div className="bg-[#3d3d3d] w-1/3 sm:w-1/4 h-screen mt-0 rounded-2xl">
-                    <div className="mt-16 flex flex-col items-center gap-4">
-                        <h1 className="text-sm sm:text-3xl font-bold text-white relative inline-block">
-                            Current Tool: <Icon image={chosenTool.image} x={48} y={48} properties="w-8 sm:w-14 height:auto inline-block align-middle" />
-                        </h1>
-                        <DropDown gear={"tool"} chooseGear={chooseGear} />
+                            <h1 className="text-sm sm:text-3xl font-bold text-white relative inline-block">
+                                Current Bag: <Icon image={chosenBag.image} x={48} y={48} properties="w-8 sm:w-14 h-auto inline-block align-middle" />
+                            </h1>
+                            <DropDown gear={"bag"} chooseGear={chooseGear} />
 
-                        <h1 className="text-sm sm:text-3xl font-bold text-white relative inline-block">
-                            Current Bag: <Icon image={chosenBag.image} x={48} y={48} properties="w-8 sm:w-14 h-auto inline-block align-middle" />
-                        </h1>
-                        <DropDown gear={"bag"} chooseGear={chooseGear} />
+                            <h1 className="text-sm sm:text-3xl font-bold text-white relative inline-block">
+                                Current Belt:<Icon image={chosenBelt.image} x={48} y={48} properties="w-8 sm:w-14 h-auto inline-block align-middle" />
+                            </h1>
+                            <DropDown gear={"belt"} chooseGear={chooseGear} />
 
-                        <h1 className="text-sm sm:text-3xl font-bold text-white relative inline-block">
-                            Current Belt:<Icon image={chosenBelt.image} x={48} y={48} properties="w-8 sm:w-14 h-auto inline-block align-middle" />
-                        </h1>
-                        <DropDown gear={"belt"} chooseGear={chooseGear} />
+                            <h1 className="text-sm sm:text-3xl font-bold text-white relative inline-block">
+                                Current Boot:<Icon image={chosenBoot.image} x={48} y={48} properties="w-8 sm:w-14 h-auto inline-block align-middle" />
+                            </h1>
+                            <DropDown gear={"boot"} chooseGear={chooseGear} />
+                            <h1 className="text-sm sm:text-3xl font-bold text-white relative inline-block">
+                                Current Mask: <Icon image={chosenMask.image} x={48} y={48} properties="w-8 sm:w-14 h-auto inline-block align-middle" />
+                            </h1>
+                            <DropDown gear={"mask"} chooseGear={chooseGear} />
+                            <h1 className="text-sm sm:text-3xl font-bold text-white relative inline-block">
+                                Current Guard: <Icon image={chosenGuard.image} x={48} y={48} properties="w-8 sm:w-14 h-auto inline-block align-middle" />
+                            </h1>
+                            <DropDown gear={"guard"} chooseGear={chooseGear} />
+                        </div>
+                    </div>
 
-                        <h1 className="text-sm sm:text-3xl font-bold text-white relative inline-block">
-                            Current Boot:<Icon image={chosenBoot.image} x={48} y={48} properties="w-8 sm:w-14 h-auto inline-block align-middle" />
-                        </h1>
-                        <DropDown gear={"boot"} chooseGear={chooseGear} />
-                        <h1 className="text-sm sm:text-3xl font-bold text-white relative inline-block">
-                            Current Mask: <Icon image={chosenMask.image} x={48} y={48} properties="w-8 sm:w-14 h-auto inline-block align-middle" />
-                        </h1>
-                        <DropDown gear={"mask"} chooseGear={chooseGear} />
-                        <h1 className="text-sm sm:text-3xl font-bold text-white relative inline-block">
-                            Current Guard: <Icon image={chosenGuard.image} x={48} y={48} properties="w-8 sm:w-14 h-auto inline-block align-middle" />
-                        </h1>
-                        <DropDown gear={"guard"} chooseGear={chooseGear} />
+
+                    {/* Stats  Area */}
+                    <div className="bg-[#3d3d3d] w-1/3 sm:w-1/4 h-96 mt-10 rounded-2xl flex flex-col items-center gap-4">
+                        <div>
+                            <h1 className="text-sm sm:text-3xl font-bold text-white mt-8 inline-block"> Honey per Minute: </h1> <span className="text-sm sm:text-3xl text-amber-400"> yoo</span>
+                        </div>
+
+                        <SaveGearButton gears={{
+                            tool: gear.tool,
+                            bag: gear.bag,
+                            belt: gear.belt,
+                            boot: gear.boot,
+                            guard: gear.guard,
+                            mask: gear.mask
+                        }} />
                     </div>
                 </div>
 
+            </main>
+        );
+    }
 
-                {/* Stats  Area */}
-                <div className="bg-[#3d3d3d] w-1/3 sm:w-1/4 h-96 mt-10 rounded-2xl flex flex-col items-center gap-4">
-                    <div>
-                        <h1 className="text-sm sm:text-3xl font-bold text-white mt-8 inline-block"> Honey per Minute: </h1> <span className="text-sm sm:text-3xl text-amber-400"> yoo</span>
+    // Data not loaded
+    if (loading) {
+        return (
+            <main className="min-h-screen bg-[#30302E] flex flex-col px-4 py-10">
+                <NavigationBar />
+                <HomeButton />
+                {/* DropDown  Area */}
+                <div className="flex flex-row justify-between">
+
+                    <div className="bg-[#3d3d3d] w-1/3 sm:w-1/4 h-screen mt-0 rounded-2xl">
+                        <div className="mt-16 flex flex-col items-center gap-4">
+                            <h1 className="text-sm sm:text-3xl font-bold text-white relative inline-block">
+                                Loading Your Gears..
+                            </h1>
+
+                            <span className="mt-10 loading loading-spinner loading-xl   " />
+
+                        </div>
                     </div>
 
-                    <SaveGearButton gears={{
-                        tool: gear.tool,
-                        bag: gear.bag,
-                        belt: gear.belt,
-                        boot: gear.boot,
-                        guard: gear.guard,
-                        mask: gear.mask
-                    }} />
-                </div>
-            </div>
 
-        </main>
-    );
-}
+                    {/* Stats  Area */}
+                    <div className="bg-[#3d3d3d] w-1/3 sm:w-1/4 h-96 mt-10 rounded-2xl flex flex-col items-center gap-4">
+                        <div>
+                            <span className="mt-10 loading loading-spinner loading-xl   " />
+                        </div>
+
+                        <SaveGearButton gears={{
+                            tool: gear.tool,
+                            bag: gear.bag,
+                            belt: gear.belt,
+                            boot: gear.boot,
+                            guard: gear.guard,
+                            mask: gear.mask
+                        }} />
+                    </div>
+                </div>
+
+            </main>
+        );
+    }
+};
