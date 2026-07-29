@@ -17,9 +17,9 @@ export function pollenPerSecond(gears: EquippedGear) {
     const chosenGuard = findGear(gears.guard, guards);
     const chosenMask = findGear(gears.mask, masks);
 
-    const bluePollen = (chosenBag.bluePollen ?? 0) + (chosenBag.pollen ?? 0) + (chosenBoot.pollen ?? 0) + (chosenGuard.bluePollen ?? 0) + (chosenMask.bluePollen ?? 0) + (chosenMask.pollen ?? 0);
-    const redPollen = (chosenBag.redPollen ?? 0) + (chosenBag.pollen ?? 0) + (chosenBoot.pollen ?? 0) + (chosenGuard.redPollen ?? 0) + (chosenMask.redPollen ?? 0) + (chosenMask.pollen ?? 0);
-    const whitePollen = (chosenBag.whitePollen ?? 0) + (chosenBag.pollen ?? 0) + (chosenBoot.pollen ?? 0) + (chosenGuard.whitePollen ?? 0) + (chosenMask.whitePollen ?? 0) + (chosenMask.pollen ?? 0);
+    const bluePollen = (chosenBag.bluePollen ?? 0) + (chosenBag.pollen ?? 0) + (chosenBoot.pollen ?? 0) + (chosenGuard.bluePollen ?? 0) + (chosenMask.bluePollen ?? 0) + (chosenMask.pollen ?? 0) + (chosenTool.pollen ?? 0) + (chosenTool.bluePollen ?? 0);
+    const redPollen = (chosenBag.redPollen ?? 0) + (chosenBag.pollen ?? 0) + (chosenBoot.pollen ?? 0) + (chosenGuard.redPollen ?? 0) + (chosenMask.redPollen ?? 0) + (chosenMask.pollen ?? 0) + (chosenTool.pollen ?? 0) + (chosenTool.redPollen ?? 0);
+    const whitePollen = (chosenBag.whitePollen ?? 0) + (chosenBag.pollen ?? 0) + (chosenBoot.pollen ?? 0) + (chosenGuard.whitePollen ?? 0) + (chosenMask.whitePollen ?? 0) + (chosenMask.pollen ?? 0) + (chosenTool.pollen ?? 0) + (chosenTool.whitePollen ?? 0);
 
     const tool = chosenTool.pollenPerSecond;
 
@@ -38,7 +38,7 @@ export function pollenPerSecond(gears: EquippedGear) {
 
     if (totalWhitePollen == 0) {
         totalWhitePollen = tool;
-        
+
     }
     return {
         bluePollen: totalBluePollen,

@@ -118,7 +118,7 @@ export default function Page() {
                             <h1 className="text-sm sm:text-xl text-amber-400"> White Fields: {roundNumbers((pollenPerSecond(gear).whitePollen) * 60)} </h1>
                             <h1 className="text-sm sm:text-xl text-amber-400"> Red Fields: {roundNumbers((pollenPerSecond(gear).redPollen) * 60)} </h1>
                             <h1 className="text-sm sm:text-xl text-amber-400"> Blue Fields: {roundNumbers((pollenPerSecond(gear).bluePollen) * 60)} </h1>
-                            <h1 className="text-sm sm:text-lg text-white"> Note: This is the minimum honey you should with gear alone, you should exceed this. </h1>
+                            <h1 className="text-sm sm:text-lg text-white"> Note: This is the minimum honey you should achieve with gear alone, you should exceed this. </h1>
 
 
 

@@ -15,10 +15,10 @@ export default async function Home() {
       {/* Hero Section */}
       <section className="relative flex min-h-screen flex-col items-center justify-center p-4">
 
-        <Sticker image="/basic_bee.webp" properties="top-35 left-5 sm:top-20 sm:left-8 rotate-[-8deg]" />
-        <Sticker image="/bumble_bee.webp" properties="bottom-20 left-20 sm:bottom-15 sm:left-40 -rotate-1" />
-        <Sticker image="/rascal_bee.webp" properties=" right-2 sm:bottom-70 sm:right-40 -rotate-1" />
-        <Sticker image="/looker_bee.webp" properties=" hidden sm:block right-2 sm:top-15 sm:right-80" />
+        <Sticker image="/basic_bee.webp" properties="top-35 left-5 sm:top-20 sm:left-8 rotate-[-8deg] animate-[beeMovement_4s_ease-in-out_infinite]" />
+        <Sticker image="/bumble_bee.webp" properties="bottom-20 left-20 sm:bottom-15 sm:left-40 -rotate-1 animate-[beeMovement2_5s_ease-in-out_infinite]" />
+        <Sticker image="/rascal_bee.webp" properties=" right-2 sm:bottom-70 sm:right-40 -rotate-1 animate-[beeMovement_2s_ease-in-out_infinite]" />
+        <Sticker image="/looker_bee.webp" properties=" hidden sm:block right-2 sm:top-15 sm:right-80 animate-[beeMovement2_6s_linear_infinite]" />
 
         <NavigationBar />
 
