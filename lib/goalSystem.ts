@@ -1,5 +1,7 @@
 import { GearCategory } from '@/lib/gear'
 
+let goalMap: Map<number, Goal>;
+
 // Goals (node) takes form of a Directed Acyclic Graph created on runtime
 interface Goal {
     id: number;
@@ -26,7 +28,7 @@ function createGoal(goals: goalShape[]): Goal[] {
         throw Error("Goals could not be found");
     }
 
-    const goalMap = new Map<number, Goal>();
+    goalMap = new Map<number, Goal>();
     // Create each goalShape its own Goal by their unique ID WITH an empty Goal array
     for (const currentGoal of goals) {
         goalMap.set(currentGoal.id, {
@@ -60,6 +62,21 @@ function createGoal(goals: goalShape[]): Goal[] {
 
     return Array.from(goalMap.values());
 
+}
+
+// The saved id of the User's current Goal is utilized to find their goal for future uses
+export function findGoal(id: number, goals: goalShape[]): Goal {
+    // Ensure goalMap is initialized
+    if (!goalMap) {
+        createGoal(goals);
+    }
+
+    const targetGoal = goalMap.get(id);
+    if (!targetGoal) {
+        throw Error(`Goal with id ${id} not found`);
+    }
+
+    return targetGoal;
 }
 
 
