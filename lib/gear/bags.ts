@@ -1,6 +1,6 @@
-import { GearType } from './gearType';
+import { GearFields } from './gearInfo';
 
-export interface Bag extends GearType {
+export interface Bag extends GearFields {
     redPollen?: number;
     bluePollen?: number;
     whitePollen?: number;

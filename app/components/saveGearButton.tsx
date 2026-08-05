@@ -1,10 +1,10 @@
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 import { useState } from 'react';
 import { postGearIds } from '@/lib/postGearIds'
 import { EquippedGear } from '@/lib/gear';
 
 import Icon from '@/app/components/icon';
-
+                                    
 
 export default function SaveGearButton({ gears }: { gears: EquippedGear }) {
     // Keep button seperate so different states of the button appears for when needed

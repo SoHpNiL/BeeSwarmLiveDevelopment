@@ -1,6 +1,6 @@
-import { GearType } from './gearType';
+import { GearFields } from './gearInfo';
 
-export interface Belt extends GearType {
+export interface Belt extends GearFields {
 }
 
 export const belts: Belt[] = [

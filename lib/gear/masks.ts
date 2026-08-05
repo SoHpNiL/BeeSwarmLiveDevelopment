@@ -1,6 +1,6 @@
-import { GearType } from './gearType';
+import { GearFields } from './gearInfo';
 
-interface Mask extends GearType {
+interface Mask extends GearFields {
     redPollen?: number;
     bluePollen?: number;
     whitePollen?: number;

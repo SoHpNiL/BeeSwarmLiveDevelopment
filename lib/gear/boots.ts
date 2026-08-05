@@ -1,7 +1,7 @@
-import { GearType } from './gearType';
+import { GearFields } from './gearInfo';
 
 
-interface Boot extends GearType {
+interface Boot extends GearFields {
     pollen?: number;
 }
 

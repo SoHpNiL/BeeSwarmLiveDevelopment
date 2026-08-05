@@ -1,6 +1,6 @@
-import { GearType } from './gearType';
+import { GearFields } from './gearInfo';
 
-interface Tool extends GearType {
+interface Tool extends GearFields {
     pollenPerSecond: number;
     redPollen?: number;
     bluePollen?: number;
