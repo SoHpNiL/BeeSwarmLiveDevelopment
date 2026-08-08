@@ -4,7 +4,7 @@ import { postGearIds } from '@/lib/postGearIds'
 import { EquippedGear } from '@/lib/gear';
 
 import Icon from '@/app/components/icon';
-                                    
+                                     
 
 export default function SaveGearButton({ gears }: { gears: EquippedGear }) {
     // Keep button seperate so different states of the button appears for when needed

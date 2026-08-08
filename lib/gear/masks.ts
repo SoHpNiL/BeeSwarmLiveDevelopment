@@ -19,3 +19,6 @@ export const masks: Mask[] = [
     { id: 8, name: "Diamond Mask", costPollen: 5000000000, pollen: 25, bluePollen: 150 },
     { id: 9, name: "Gummy Mask", costPollen: 5000000000, pollen: 25, whitePollen: 125 },
 ];
+
+
+// Utilizing gears, find the gear the forgot

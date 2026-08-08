@@ -1,7 +1,6 @@
 import { auth } from "@/auth";
 import { NextResponse } from "next/server";
 import clientPromise from "@/lib/mongodb";
-import { EquippedGear } from "@/lib/gear/gearInfo";
 
 export async function GET() {
     const session = await auth();

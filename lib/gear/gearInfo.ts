@@ -19,6 +19,7 @@ export interface GearFields {
     extraCost?: string;
     id: number;
     image?: string;
+    goalId?: number;
 }
 
 
