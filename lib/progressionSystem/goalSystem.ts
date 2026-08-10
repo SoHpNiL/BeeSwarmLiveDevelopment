@@ -1,5 +1,6 @@
 import { Goal, GoalShape } from '@/lib/progressionSystem';
 import { EquippedGear } from '@/lib/gear'
+import { Queue } from '@/lib/QueueClass'
 
 
 // At the bottom of this file contains all the actual data.
@@ -24,7 +25,6 @@ export function createGoal(): Goal[] {
             nextGoal: []
         })
     }
-
 
     // Since all Goal objects (nodes) are made. now connect them with eachother (edges)
     for (const currentGoal of goalInfo) {
@@ -51,15 +51,22 @@ export function createGoal(): Goal[] {
 function isCompleted(goal: Goal, playerGear: EquippedGear): boolean {
     // inputs require player's gear data hence users must be logged in
     switch (goal.type) {
-        case 'gear': { 
-            return (goal.gearId != null && goal.gearCategory != null && playerGear[goal.gearCategory] >= goal.gearId); 
+        case 'gear': {
+            return (goal.gearId != null && goal.gearCategory != null && playerGear[goal.gearCategory] >= goal.gearId);
         } // Compare gearId of goal vs player to see if completed
 
         case 'bee': // TODO: implement new data type for player's bee count
-        case 'milestone':
-        case 'multichoice':
+
+
+        // This case follows a Breadth-first search to ensure all branches (goals) are completed before going deeper.
+        case 'multichoice': {
+
+        }
+
     }
 }
+
+
 
 export function traverseDAG(start: number, playerGear: EquippedGear): Goal {
 
@@ -69,17 +76,48 @@ export function traverseDAG(start: number, playerGear: EquippedGear): Goal {
     }
 
     const visitedNode = new Set<number>(); // save registered goal's via their IDs
+    const queuedNode = new Queue; // Queue nodes that are directed by nodes in visitedNode in order (for BFS)
+    let nextGoal: Goal | undefined;
 
-    goalMap.forEach( (item) => {
-        if (visitedNode.has(item.id)){
+    function walk(goalId: number) {
+        if (visitedNode.has(goalId)) {
             return;
         }
 
-        visitedNode.add(item.id);
-        if (isCompleted(item, playerGear)){
+        visitedNode.add(goalId);
+        const goal = goalMap.get(goalId); // Get the object Goal/Node itself
 
+        // Obtain the visited Nodes linked goals' IDs into a single array
+        const connectedGoals = goal?.nextGoal.map((item): number => {
+            return item.id;
+        })
+
+        // Add the IDs into queue to visit next
+        if (connectedGoals != null) {
+            for (const id of connectedGoals) {
+                queuedNode.add(id);
+            }
         }
-    })
+
+        if (!goal) throw new Error(`Goal with id ${goalId} not found`);
+
+
+        // TODO: complete logic
+        if (goal.type === 'multichoice') {
+            goal.nextGoal.forEach((next) => walk(next.id));
+            return;
+        }
+
+        if (isCompleted(goal, playerGear)) {
+            goal.nextGoal.forEach((next) => walk(next.id));
+        } else {
+            nextGoal = goal;
+        }
+    }
+
+    walk(start); // TODO, implement starting BFS at later points
+
+    return nextGoal;
 
 }
 
