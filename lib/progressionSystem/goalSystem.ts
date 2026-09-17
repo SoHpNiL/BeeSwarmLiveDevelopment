@@ -1,12 +1,27 @@
 import { Goal, GoalShape } from '@/lib/progressionSystem';
-import { EquippedGear } from '@/lib/gear'
-import { Queue } from '@/lib/QueueClass'
+import { EquippedGear } from '@/lib/gear';
+import { Queue } from '@/lib/QueueClass';
+import { getGearIds } from '@/lib/getGearIds';
 
 
 // At the bottom of this file contains all the actual data.
 
 let goalMap: Map<number, Goal>; // DAG containing all data and directions
 
+
+const DEFAULT_GEAR: EquippedGear = { tool: 1, bag: 1, belt: 0, boot: 0, guard: 0, mask: 0 };
+
+export async function getCurrentGoal(start: number): Promise<Goal> {
+    let playerGear: EquippedGear;
+
+    try {
+        playerGear = await getGearIds();
+    } catch {
+        playerGear = DEFAULT_GEAR;
+    }
+
+    return traverseDAG(start, playerGear);
+}
 
 
 // Transform goalShape array to Goal array by creating each goalShape objects to their own Goal object, hence allowing mapping
@@ -49,23 +64,17 @@ export function createGoal(): Goal[] {
 }
 
 function isCompleted(goal: Goal, playerGear: EquippedGear): boolean {
-    // inputs require player's gear data hence users must be logged in
     switch (goal.type) {
-        case 'gear': {
+        case 'gear':
             return (goal.gearId != null && goal.gearCategory != null && playerGear[goal.gearCategory] >= goal.gearId);
-        } // Compare gearId of goal vs player to see if completed
 
-        case 'bee': // TODO: implement new data type for player's bee count
-
-
-        // This case follows a Breadth-first search to ensure all branches (goals) are completed before going deeper.
-        case 'multichoice': {
-
-        }
-
+        case 'bee':
+            // TODO: compare against player's bee count once that data exists
+            return false;
     }
-}
 
+    return false;
+}
 
 
 export function traverseDAG(start: number, playerGear: EquippedGear): Goal {
@@ -76,8 +85,8 @@ export function traverseDAG(start: number, playerGear: EquippedGear): Goal {
     }
 
     const visitedNode = new Set<number>(); // save registered goal's via their IDs
-    const queuedNode = new Queue; // Queue nodes that are directed by nodes in visitedNode in order (for BFS)
-    let nextGoal: Goal | undefined;
+    const queuedNode = new Queue<number>; // Queue nodes that are directed by nodes in visitedNode in order (for BFS)
+    let assignedGoal!: Goal;
 
     function walk(goalId: number) {
         if (visitedNode.has(goalId)) {
@@ -86,6 +95,7 @@ export function traverseDAG(start: number, playerGear: EquippedGear): Goal {
 
         visitedNode.add(goalId);
         const goal = goalMap.get(goalId); // Get the object Goal/Node itself
+        if (!goal) throw new Error(`Goal with id ${goalId} not found`);
 
         // Obtain the visited Nodes linked goals' IDs into a single array
         const connectedGoals = goal?.nextGoal.map((item): number => {
@@ -99,7 +109,6 @@ export function traverseDAG(start: number, playerGear: EquippedGear): Goal {
             }
         }
 
-        if (!goal) throw new Error(`Goal with id ${goalId} not found`);
 
 
         // TODO: complete logic
@@ -111,13 +120,14 @@ export function traverseDAG(start: number, playerGear: EquippedGear): Goal {
         if (isCompleted(goal, playerGear)) {
             goal.nextGoal.forEach((next) => walk(next.id));
         } else {
-            nextGoal = goal;
+            assignedGoal = goal;
         }
     }
 
     walk(start); // TODO, implement starting BFS at later points
 
-    return nextGoal;
+
+    return assignedGoal;
 
 }
 
