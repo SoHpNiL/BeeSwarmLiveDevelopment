@@ -5,6 +5,7 @@ import HomeButton from '@/app/components/homeButton';
 import DropDown from '@/app/components/dropDown';
 import Icon from '@/app/components/icon';
 import SaveGearButton from '@/app/components/saveGearButton';
+import Sticker from '@/app/components/sticker';
 import { getGearIds } from '@/lib/getGearIds';
 import { useState, useEffect } from 'react';
 import { tools, bags, belts, boots, guards, masks, findGear, EquippedGear, GearCategory } from '@/lib/gear/';
@@ -16,6 +17,14 @@ Function: This page allows users to select and save gears to the database and re
           gear they aim to achieve 
 */
 
+const gearSlots: { label: string; key: GearCategory }[] = [
+    { label: "Tool", key: "tool" },
+    { label: "Bag", key: "bag" },
+    { label: "Belt", key: "belt" },
+    { label: "Boot", key: "boot" },
+    { label: "Mask", key: "mask" },
+    { label: "Guard", key: "guard" },
+];
 
 export default function Page() {
     // Utilize ID numbers to set gears states
@@ -49,17 +58,14 @@ export default function Page() {
         loadData();
     }, []);
 
-
-
-
-    // The variables of each Gear Object
-    const chosenTool = findGear(gear.tool, tools);
-    const chosenBag = findGear(gear.bag, bags);
-    const chosenBoot = findGear(gear.boot, boots);
-    const chosenBelt = findGear(gear.belt, belts);
-    const chosenGuard = findGear(gear.guard, guards);
-    const chosenMask = findGear(gear.mask, masks);
-
+    const chosenGear = {
+        tool: findGear(gear.tool, tools),
+        bag: findGear(gear.bag, bags),
+        boot: findGear(gear.boot, boots),
+        belt: findGear(gear.belt, belts),
+        guard: findGear(gear.guard, guards),
+        mask: findGear(gear.mask, masks),
+    };
 
     // chooseTool sets the ID for tool useState.
     const chooseGear = (x: number, gear: GearCategory) => {
@@ -67,71 +73,61 @@ export default function Page() {
         setGear(prev => ({ ...prev, [gear]: x }));
     }
 
-
+    const floatingStickers = (
+        <>
+            <Sticker image="/gears/bags/Canister.webp" properties="hidden lg:block top-24 left-[4%] -rotate-6 opacity-60 animate-[beeMovement_5s_ease-in-out_infinite]" />
+            <Sticker image="/gears/tools/bubble_wand.webp" properties="hidden lg:block bottom-32 left-[8%] rotate-3 opacity-60 animate-[beeMovement2_6s_ease-in-out_infinite]" />
+            <Sticker image="/gears/bags/Mega-Jug.webp" properties="hidden lg:block top-1/2 right-[5%] -translate-y-1/2 rotate-6 opacity-60 animate-[beeMovement_4s_ease-in-out_infinite]" />
+            <Sticker image="/gears/tools/gummyballer.webp" properties="hidden lg:block bottom-20 right-[10%] -rotate-3 opacity-50 animate-[beeMovement2_7s_ease-in-out_infinite]" />
+            <Sticker image="/gears/tools/pulsar.webp" properties="hidden xl:block top-16 right-[18%] rotate-12 opacity-40 animate-[beeMovement_6s_ease-in-out_infinite]" />
+        </>
+    );
 
     // Data loaded
     if (!loading) {
         return (
-            <main className="min-h-screen bg-[#30302E] flex flex-col px-4 py-10">
+            <main className="relative min-h-screen bg-[#30302E] flex flex-col px-4 py-10 pb-32 overflow-x-hidden">
                 <NavigationBar />
                 <HomeButton />
-                {/* DropDown  Area */}
-                <div className="flex flex-row justify-between">
 
-                    <div className="bg-[#3d3d3d] w-1/3 sm:w-1/4 h-screen mt-0 rounded-2xl">
-                        <div className="mt-16 flex flex-col items-center gap-4">
-                            <h1 className="text-sm sm:text-3xl font-bold text-white relative inline-block">
-                                Current Tool: <Icon image={chosenTool.image} x={48} y={48} properties="w-8 sm:w-14 height:auto inline-block align-middle" />
-                            </h1>
-                            <DropDown gear={"tool"} chooseGear={chooseGear} />
+                {floatingStickers}
 
-                            <h1 className="text-sm sm:text-3xl font-bold text-white relative inline-block">
-                                Current Bag: <Icon image={chosenBag.image} x={48} y={48} properties="w-8 sm:w-14 h-auto inline-block align-middle" />
-                            </h1>
-                            <DropDown gear={"bag"} chooseGear={chooseGear} />
+                <div className="relative z-10 w-full max-w-5xl mx-auto mt-8 flex flex-col lg:flex-row gap-6">
 
-                            <h1 className="text-sm sm:text-3xl font-bold text-white relative inline-block">
-                                Current Belt:<Icon image={chosenBelt.image} x={48} y={48} properties="w-8 sm:w-14 h-auto inline-block align-middle" />
-                            </h1>
-                            <DropDown gear={"belt"} chooseGear={chooseGear} />
-
-                            <h1 className="text-sm sm:text-3xl font-bold text-white relative inline-block">
-                                Current Boot:<Icon image={chosenBoot.image} x={48} y={48} properties="w-8 sm:w-14 h-auto inline-block align-middle" />
-                            </h1>
-                            <DropDown gear={"boot"} chooseGear={chooseGear} />
-                            <h1 className="text-sm sm:text-3xl font-bold text-white relative inline-block">
-                                Current Mask: <Icon image={chosenMask.image} x={48} y={48} properties="w-8 sm:w-14 h-auto inline-block align-middle" />
-                            </h1>
-                            <DropDown gear={"mask"} chooseGear={chooseGear} />
-                            <h1 className="text-sm sm:text-3xl font-bold text-white relative inline-block">
-                                Current Guard: <Icon image={chosenGuard.image} x={48} y={48} properties="w-8 sm:w-14 h-auto inline-block align-middle" />
-                            </h1>
-                            <DropDown gear={"guard"} chooseGear={chooseGear} />
+                    {/* Gear slots */}
+                    <div className="bg-gray-400/20 backdrop-blur-md rounded-2xl shadow p-6 flex-1">
+                        <h2 className="text-white text-xl sm:text-2xl font-bold mb-5">Your Gear</h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            {gearSlots.map(({ label, key }) => (
+                                <div key={key} className="flex items-center justify-between gap-3 bg-black/20 rounded-xl px-4 py-3">
+                                    <div className="flex items-center gap-3 min-w-0">
+                                        <Icon image={chosenGear[key].image} x={48} y={48} properties="w-10 h-10 shrink-0" />
+                                        <div className="min-w-0">
+                                            <div className="text-gray-300 text-xs sm:text-sm">{label}</div>
+                                            <div className="text-white font-bold text-sm sm:text-base truncate">{chosenGear[key].name}</div>
+                                        </div>
+                                    </div>
+                                    <DropDown gear={key} chooseGear={chooseGear} />
+                                </div>
+                            ))}
                         </div>
                     </div>
 
-
                     {/* Stats  Area */}
-                    <div className="bg-[#3d3d3d] w-1/3 sm:w-1/4 h-96 mt-10 rounded-2xl flex flex-col items-center gap-4">
+                    <div className="bg-gray-400/20 backdrop-blur-md rounded-2xl shadow p-6 w-full lg:w-80 flex flex-col gap-6">
                         <div>
-                            <h1 className="text-sm sm:text-xl font-bold text-white mt-8"> Pollen per Minute </h1>
-                            <h1 className="text-sm sm:text-xl text-amber-400"> White Fields: {roundNumbers((pollenPerSecond(gear).whitePollen) * 60)} </h1>
-                            <h1 className="text-sm sm:text-xl text-amber-400"> Red Fields: {roundNumbers((pollenPerSecond(gear).redPollen) * 60)} </h1>
-                            <h1 className="text-sm sm:text-xl text-amber-400"> Blue Fields: {roundNumbers((pollenPerSecond(gear).bluePollen) * 60)} </h1>
-                            <h1 className="text-sm sm:text-lg text-white"> Note: This is the minimum honey you should achieve with gear alone, you should exceed this. </h1>
-
-
-
+                            <h2 className="text-white text-xl sm:text-2xl font-bold mb-3">Pollen per Minute</h2>
+                            <div className="flex flex-col gap-1">
+                                <span className="text-amber-400 text-sm sm:text-base">White Fields: {roundNumbers((pollenPerSecond(gear).whitePollen) * 60)}</span>
+                                <span className="text-amber-400 text-sm sm:text-base">Red Fields: {roundNumbers((pollenPerSecond(gear).redPollen) * 60)}</span>
+                                <span className="text-amber-400 text-sm sm:text-base">Blue Fields: {roundNumbers((pollenPerSecond(gear).bluePollen) * 60)}</span>
+                            </div>
+                            <p className="text-gray-300 text-xs sm:text-sm mt-4">
+                                This is the minimum honey you should achieve with gear alone, you should exceed this.
+                            </p>
                         </div>
 
-                        <SaveGearButton gears={{
-                            tool: gear.tool,
-                            bag: gear.bag,
-                            belt: gear.belt,
-                            boot: gear.boot,
-                            guard: gear.guard,
-                            mask: gear.mask
-                        }} />
+                        <SaveGearButton gears={gear} />
                     </div>
                 </div>
 
@@ -142,38 +138,22 @@ export default function Page() {
     // Data not loaded
     if (loading) {
         return (
-            <main className="min-h-screen bg-[#30302E] flex flex-col px-4 py-10">
+            <main className="relative min-h-screen bg-[#30302E] flex flex-col px-4 py-10 overflow-x-hidden">
                 <NavigationBar />
                 <HomeButton />
-                {/* DropDown  Area */}
-                <div className="flex flex-row justify-between">
 
-                    <div className="bg-[#3d3d3d] w-1/3 sm:w-1/4 h-screen mt-0 rounded-2xl">
-                        <div className="mt-16 flex flex-col items-center gap-4">
-                            <h1 className="text-sm sm:text-3xl font-bold text-white relative inline-block">
-                                Loading Your Gears..
-                            </h1>
+                {floatingStickers}
 
-                            <span className="mt-10 loading loading-spinner loading-xl   " />
+                <div className="relative z-10 w-full max-w-5xl mx-auto mt-8 flex flex-col lg:flex-row gap-6">
 
-                        </div>
+                    <div className="bg-gray-400/20 backdrop-blur-md rounded-2xl shadow p-6 flex-1 flex flex-col items-center justify-center gap-4 min-h-64">
+                        <h1 className="text-white text-lg sm:text-2xl font-bold">Loading Your Gears..</h1>
+                        <span className="loading loading-spinner loading-xl" />
                     </div>
 
-
-                    {/* Stats  Area */}
-                    <div className="bg-[#3d3d3d] w-1/3 sm:w-1/4 h-96 mt-10 rounded-2xl flex flex-col items-center gap-4">
-                        <div>
-                            <span className="mt-10 loading loading-spinner loading-xl   " />
-                        </div>
-
-                        <SaveGearButton gears={{
-                            tool: gear.tool,
-                            bag: gear.bag,
-                            belt: gear.belt,
-                            boot: gear.boot,
-                            guard: gear.guard,
-                            mask: gear.mask
-                        }} />
+                    <div className="bg-gray-400/20 backdrop-blur-md rounded-2xl shadow p-6 w-full lg:w-80 flex flex-col items-center justify-center gap-4 min-h-64">
+                        <span className="loading loading-spinner loading-xl" />
+                        <SaveGearButton gears={gear} />
                     </div>
                 </div>
 
