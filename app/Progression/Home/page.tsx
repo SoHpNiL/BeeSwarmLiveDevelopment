@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import type { ReactNode } from 'react';
+import Link from 'next/link';
 import NavigationBar from '@/app/components/navigationBar';
 import HomeButton from '@/app/components/homeButton';
 import Link from 'next/link';
@@ -18,10 +20,33 @@ const stats = (currentGoal: Goal | null) => [
 
 export default function Page() {
     const [currentGoal, setCurrentGoal] = useState<Goal | null>(null);
+    const [status, setStatus] = useState<LoadState>("loading");
 
     useEffect(() => {
-        getCurrentGoal(1).then(setCurrentGoal).catch(() => setCurrentGoal(null));
+        let cancelled = false;
+
+        getCurrentGoal(1)
+            .then((goal) => {
+                if (cancelled) return;
+                setCurrentGoal(goal ?? null); // undefined when every goal is completed
+                setStatus("ready");
+            })
+            .catch(() => {
+                if (cancelled) return;
+                setCurrentGoal(null);
+                setStatus("error");
+            });
+
+        return () => { cancelled = true; };
     }, []);
+
+    let headline: string | null = null;
+    if (status === "ready") headline = currentGoal?.description ?? "You're all caught up";
+    if (status === "error") headline = "Couldn't load your next gear";
+
+    // Multichoice goals have sentence-long descriptions, so they get a smaller size
+    const isLong = (headline?.length ?? 0) > 28;
+    const rankPct = ((RANKING.rank - 1) / (RANKING.total - 1)) * 100;
 
     return (
         <main className="bg-[#30302E] flex flex-col min-h-screen">
