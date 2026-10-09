@@ -17,7 +17,7 @@
 
 **BeeSwarmLive** is a full-stack web platform serving the Bee Swarm Simulator community, one of the largest Roblox communities with over **270,000 Discord members**. The platform provides players with live tools, game resources, and community features in one centralised hub.
 
-Deployment is ongoing.
+Work is ongoing.
 
 ---
 

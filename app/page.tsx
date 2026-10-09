@@ -47,7 +47,7 @@ export default async function Home() {
         {/* Buttons */}
         <div className="flex flex-wrap gap-4 justify-center mb-8 px-4">
           <Link
-            href="/Progression/Home"
+            href="/Progression/Overview"
             className="btn btn-ghost inline-flex items-center gap-3 text-xl font-bold tracking-tight bg-amber-600 sm:text-xl btn-lg rounded-full px-5 py-3 sm:px-8 text-yellow-50 hover:bg-amber-700 hover:outline-amber-700"
           >
             <div className="antialiased relative w-9 h-9 transition transform-gpu ">
