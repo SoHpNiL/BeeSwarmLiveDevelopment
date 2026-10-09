@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import NavigationBar from '@/app/components/navigationBar';
 import HomeButton from '@/app/components/homeButton';
 import Link from 'next/link';
-import Icon from '@/app/components/icon';
+import Icon from '@/app/components/buttonIcon';
 import Sticker from '@/app/components/sticker';
 import { getCurrentGoal } from '@/lib/progressionSystem/goalSystem';
 import type { Goal } from '@/lib/progressionSystem';
