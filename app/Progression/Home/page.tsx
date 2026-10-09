@@ -5,7 +5,6 @@ import type { ReactNode } from 'react';
 import Link from 'next/link';
 import NavigationBar from '@/app/components/navigationBar';
 import HomeButton from '@/app/components/homeButton';
-import Link from 'next/link';
 import Icon from '@/app/components/buttonIcon';
 import Sticker from '@/app/components/sticker';
 import { getCurrentGoal } from '@/lib/progressionSystem/goalSystem';
