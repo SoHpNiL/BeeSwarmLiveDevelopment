@@ -60,7 +60,7 @@ function Honeycomb() {
     return (
         <svg
             aria-hidden="true"
-            className="pointer-events-none absolute inset-y-0 right-0 h-full w-full text-amber-500/25 sm:w-3/4 [mask-image:linear-gradient(to_left,black,transparent)]"
+            className="pointer-events-none absolute inset-y-0 right-0 h-full w-full text-amber-500/25 sm:w-3/4 mask-[linear-gradient(to_left,black,transparent)]"
         >
             <defs>
                 <pattern id="hero-honeycomb" width="34.64" height="60" patternUnits="userSpaceOnUse" patternTransform="scale(1.6)">
